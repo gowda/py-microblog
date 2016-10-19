@@ -30,3 +30,11 @@ Use `pip-install` script in `./bin` directory to install new dependency. `pip-in
 ```bash
 $ ./bin/pip-install <package-name>
 ```
+
+### Run Server
+Server can be run using:
+```bash
+$ python run.py
+```
+
+Server will be listening at [http://127.0.0.1:5000](http://127.0.0.1:5000)
