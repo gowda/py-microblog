@@ -11,3 +11,7 @@ Feature: Respond to '/home', '/help' paths
     When I visit '/about' path
     Then I should get a '200' response
     And title set to 'py-microblog - about'
+  Scenario: Visit '/contact' path
+    When I visit '/contact' path
+    Then I should get a '200' response
+    And title set to 'py-microblog - contact'
