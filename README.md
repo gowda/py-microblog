@@ -38,3 +38,8 @@ $ python run.py
 ```
 
 Server will be listening at [http://127.0.0.1:5000](http://127.0.0.1:5000)
+
+### Run Tests
+```bash
+$ lettuce tests/features
+```
