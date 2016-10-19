@@ -1,0 +1,42 @@
+#!/bin/sh
+
+# pip-install
+#
+# enhance 'pip' to save the installed package into requirements tracking file
+#
+# Usage:
+#   ./pip-install <package-name>
+#
+# Known issues:
+#   1. If the same package is added twice, then requirements tracking file will
+#      have two entries for the package. Installing again will result in three
+#      entries.
+#   2. All packages with name containing <package-name> string will also be
+#      appended to requirements tracking file.
+#      For example,
+#        $ ./pip-install flask-oauthlib
+#        $ ./pip-install flask
+#
+#        $ cat requirements.txt
+#        Flask-OAuthlib==0.9.3
+#        Flask==0.11.1
+#        Flask-OAuthlib==0.9.3
+#
+
+# totally inspired by http://stackoverflow.com/a/29679231
+function save_install() {
+  package_name=$1
+  requirements_file=$2
+
+  pip install $package_name
+
+  if [[ "X$?" -eq "X0" ]]; then
+    if [[ -z $requirements_file ]]; then
+      requirements_file='./requirements.txt'
+    fi
+
+    pip freeze | grep -i $package_name >> $requirements_file
+  fi
+}
+
+save_install "$@"
