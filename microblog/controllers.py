@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -6,10 +6,10 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/home')
 def home():
-    return 'Home Page'
+    return render_template('home.html')
 
 
 # function name 'help' conflicts with builtin function
 @app.route('/help')
 def help_page():
-    return 'Help Page'
+    return render_template('help.html')
